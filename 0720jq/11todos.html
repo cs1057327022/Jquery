@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jq/jquery.js"></script>
+</head>
+<body>
+    <input type="text">
+    <div class="content">
+        <p>我是内容</p>
+    </div>
+    <script>
+        $('p').on('click',function(){
+            // 等蛋入隐藏动画执行完毕后再再删除
+            $(this).fadeOut(500,function(){
+                $(this).remove(); 
+            });
+        })
+        $('input[type=text]').on('keydown',function(e){
+            if(e.keyCode == 13){
+                // val() 获取和设置input的value值
+                // ---> 没有参数 获取 有参数设置
+                var val = $('input[type=text]').val();
+                var p = `<p>${val}</p>`
+                // 插入p标签有淡出的动画效果
+                p = $(p).css({display:'none'})
+                $('.content').append(p);
+                // 添加元素时候为隐藏状态，再动画淡出
+                $(p).fadeIn(500);
+
+                $('input[type=text]').val('')
+                // 获取所有的p
+
+                // $('p')选中所有p 已经存在p 存在多次绑定同一个事件，导致了事件处理函数多次触发
+                // 优化：$(p) 只是给当前【插入p】 绑定点击事件，保证每一个p 只有一个点击事件
+                // --->问题：初始化不会被选中 --->解决：初始化再选中 绑定事件
+                
+                $(p).on('click',function(){
+                    console.log(this);
+                    $(this).fadeOut(500,function(){
+                        $(this).remove();
+                    });
+
+                })
+            }
+            
+        })
+        
+        
+       
+    </script>
+</body>
+</html>

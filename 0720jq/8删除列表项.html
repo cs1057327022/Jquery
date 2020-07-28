@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jq/jquery.js"></script>
+</head>
+<body>
+    <h1>我是内容01</h1>
+    <h1>我是内容02</h1>
+    <h1>我是内容03</h1>
+    <h1>我是内容04</h1>
+    <h1>我是内容05</h1>
+    <h1>我是内容06</h1>
+    <h1>我是内容07</h1>
+    <h1>我是内容08</h1>
+    <h1>我是内容09</h1>
+    <h1>我是内容10</h1>
+    <script>
+        $('h1').on('click',function(){
+            console.log(this);
+            var res = $(this).remove();
+        })
+    </script>
+</body>
+</html>

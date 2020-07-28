@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jq/jquery.js"></script>
+    <style>
+        .active{
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        // css(options) 给元素设置样式，返回jq对象
+        // --->优势 可以继续调用jq 下的api
+        // 参数：对象 key:value 是css样式属性 注意：backgroundColor
+        var res = $('.box').css({
+            width:'100px',
+            height:'100px',
+            background:'yellow'
+        })
+        console.log(res);
+
+        // 如何通过修改类名的方式:修改css样式
+        // addClass(str) 作用：给HTML 添加类名：并返回jquery对象
+        // 参数:类名字符串
+        $('div').addClass('active')
+    </script>
+</body>
+</html>

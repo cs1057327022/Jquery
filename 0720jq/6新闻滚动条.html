@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        .wrap{
+            width: 300px;
+            height: 50px;
+            background-color: violet;
+            border: 1px solid #000000;
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            /* padding-left: 20px; */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap"></div>
+    <script src="../jq/jquery.js"></script>
+    <script>
+        var news = ['今天天气真好啊','昨天更美好','听说唐桑要吃屁大个的屁','唐桑每天就是奥利给','是不是进展顺利','唐桑奥力给吃不停','听说唐桑奥力给断货了再求货','唐桑天天白嫖']
+        news.forEach(function(item){
+            $('.wrap').append(`<p>${item}</p>`)
+        });
+        var timer = setInterval(function() {
+            $('p:first').animate({
+                marginTop:'-50px'
+            },1000,function(){
+                // 清空margin-top --> 不清空bug
+                $('p').css({
+                    marginTop:0
+                })
+                $('.wrap').append($('p:first'))
+            })
+            return timer
+        }, 1100);
+
+        // bug 闪现 因为aimate是异步 所以 没有动画直接插入dom
+        // $('.wrap').append($('p:first'))
+
+        // 动画清除
+        // $('.wrap').mouseover(function(){
+        //     clearInterval(timer)
+        // });
+    </script>
+</body>
+</html>

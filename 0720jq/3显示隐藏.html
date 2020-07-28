@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jq/jquery.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            display: none;
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <button class="show">显示</button>
+    <button class="hide">隐藏</button>
+    <div class="box"></div>
+    <script>
+        $('.show').on('click',function(){
+            console.log(1111);
+            // 点击show 让box显示
+            $('.box').show(500);
+        })
+        $('.hide').on('click',function(){
+            console.log(1111);
+            $('.box').hide(500);
+        })
+    </script>
+</body>
+</html>
